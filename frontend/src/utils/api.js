@@ -1,4 +1,4 @@
-const API_BASE = 'https://ai-breast-cancer-care-backend.vercel.app/api';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:3001/api' : '/api')).replace(/\/+$/, '');
 //base api
 /**
  * Analyze mammogram images via Gemini API

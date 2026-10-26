@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node server/index.js",
-    "test": "node tests/recurrence.test.js && node tests/classify.test.js"
+    "test": "node tests/recurrence.test.js && node tests/classify.test.js",
+    "build": "npm --prefix frontend run build"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

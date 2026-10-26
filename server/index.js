@@ -46,7 +46,7 @@ app.get(['/api/health', '/health'], (_req, res) => {
 });
 
 // ── Mammogram Analysis ──
-app.post(['/api/analyze', '/analyze'], upload.fields([
+app.post(['/api/analyze', '/analyze', '/api/predict', '/predict'], upload.fields([
   { name: 'cc', maxCount: 1 },
   { name: 'mlo', maxCount: 1 }
 ]), async (req, res) => {
