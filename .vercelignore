@@ -1,5 +1,4 @@
-# Ignore nested legacy Python repository and virtual environments
-AI-Breast-Cancer-Care--main/
+# Virtual environments
 .venv/
 .venv1/
 tests/
