@@ -1,0 +1,37 @@
+# Model files
+best_model.keras
+weights_warmup.weights.h5
+mammo_classifier.keras
+AI-Breast-Cancer-Care--main/best_model.keras
+AI-Breast-Cancer-Care--main/weights_warmup.weights.h5
+
+# Python
+__pycache__/
+.venv/
+.venv1/
+*.pyc
+
+# Node
+node_modules/
+dist/
+frontend/dist/
+
+# Environment
+.env
+server/.env
+
+# IDE
+copilot*
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test temp files
+test_cc.jpg
+test_mlo.jpg
+
+# Shortcuts
+*.lnk
