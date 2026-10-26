@@ -1,0 +1,10 @@
+# Ignore nested legacy Python repository and virtual environments
+AI-Breast-Cancer-Care--main/
+.venv/
+.venv1/
+tests/
+
+# Ignore large media & models
+*.mp4
+*.keras
+*.h5

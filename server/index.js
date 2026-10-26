@@ -41,12 +41,12 @@ function validateImageFile(file, maxMB = 10) {
 }
 
 // ── Health check ──
-app.get('/api/health', (_req, res) => {
+app.get(['/api/health', '/health'], (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // ── Mammogram Analysis ──
-app.post('/api/analyze', upload.fields([
+app.post(['/api/analyze', '/analyze'], upload.fields([
   { name: 'cc', maxCount: 1 },
   { name: 'mlo', maxCount: 1 }
 ]), async (req, res) => {
@@ -178,12 +178,12 @@ Rules for the response:
 });
 
 // ── Breast Cancer Type Classification ──
-// POST /api/classify
+// POST /api/classify and POST /classify
 // Accepts CC + MLO mammogram images and returns a radiological cancer type classification.
 // IMPORTANT: This uses Gemini vision-based pattern recognition. It is NOT a validated
 // trained subtype classifier. A dedicated model trained on pathology-labeled data
 // (e.g., TCGA-BRCA with radiology-pathology pairs) would be required for clinical use.
-app.post('/api/classify', upload.fields([
+app.post(['/api/classify', '/classify'], upload.fields([
   { name: 'cc', maxCount: 1 },
   { name: 'mlo', maxCount: 1 }
 ]), async (req, res) => {
@@ -339,7 +339,7 @@ RULES:
 });
 
 // ── Chatbot ──
-app.post('/api/chat', async (req, res) => {
+app.post(['/api/chat', '/chat'], async (req, res) => {
   try {
     const { message, history = [] } = req.body;
 
@@ -411,13 +411,17 @@ const handleRecurrencePrediction = (req, res) => {
   }
 };
 
-app.post('/api/predict-recurrence', handleRecurrencePrediction);
-app.post('/predict-recurrence', handleRecurrencePrediction);
+app.post(['/api/predict-recurrence', '/predict-recurrence'], handleRecurrencePrediction);
 
-app.listen(PORT, () => {
-  console.log(`🩺 AI Breast Cancer Care server running on http://localhost:${PORT}`);
-  console.log(`   Health check: http://localhost:${PORT}/api/health`);
-  console.log(`   Classify endpoint: http://localhost:${PORT}/api/classify`);
-  console.log(`   Recurrence endpoint: http://localhost:${PORT}/api/predict-recurrence`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🩺 AI Breast Cancer Care server running on http://localhost:${PORT}`);
+    console.log(`   Health check: http://localhost:${PORT}/api/health`);
+    console.log(`   Classify endpoint: http://localhost:${PORT}/api/classify`);
+    console.log(`   Recurrence endpoint: http://localhost:${PORT}/api/predict-recurrence`);
+  });
+}
+
+export default app;
+
 

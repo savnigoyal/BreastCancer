@@ -1,0 +1,19 @@
+{
+  "name": "ai-breast-cancer-care-backend",
+  "version": "1.0.0",
+  "description": "AI Breast Cancer Care Backend API - Gemini Vision & Recurrence Risk Analysis",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "test": "node tests/recurrence.test.js && node tests/classify.test.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
