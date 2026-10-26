@@ -1585,3 +1585,650 @@ button { cursor: pointer; font-family: inherit; }
   }
 }
 
+/* ══════════════════════════════════════════════════
+   RECURRENCE RISK ANALYSIS (SECTION 3)
+   ══════════════════════════════════════════════════ */
+.recurrence-card {
+  margin-top: 36px;
+  background: white;
+  border-radius: var(--card-radius);
+  border-top: 5px solid #d81b60;
+  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.08);
+  padding: 30px 24px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.recurrence-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.recurrence-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.recurrence-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #c2185b;
+  margin-bottom: 4px;
+}
+
+.recurrence-card__subtitle {
+  font-size: 0.88rem;
+  color: #777;
+  font-weight: 400;
+}
+
+/* ── Notices ── */
+.recurrence-notice {
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.recurrence-notice--warn {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #6d4c41;
+}
+
+.recurrence-notice__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #b71c1c;
+  margin-bottom: 8px;
+}
+
+.recurrence-notice__body {
+  margin-bottom: 8px;
+  color: #4e342e;
+}
+
+.recurrence-notice__sub {
+  font-size: 0.86rem;
+  color: #6d4c41;
+}
+
+.recurrence-notice--error {
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+}
+
+/* ── Presets ── */
+.recurrence-presets {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(109, 76, 65, 0.25);
+}
+
+.recurrence-presets__label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #5d4037;
+  margin-bottom: 8px;
+}
+
+.recurrence-presets__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-btn {
+  background: white;
+  border: 1px solid #d81b60;
+  color: #c2185b;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-btn:hover {
+  background: #fce4ec;
+  transform: translateY(-1px);
+}
+
+/* ── Form Toggle ── */
+.recurrence-form-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-toggle-btn {
+  background: #f8bbd0;
+  border: none;
+  color: #880e4f;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.form-toggle-btn:hover {
+  background: #f48fb1;
+  color: white;
+}
+
+/* ── Clinical Input Form ── */
+.recurrence-input-form {
+  background: #fcf8fa;
+  border: 1px solid #f8bbd0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input,
+.form-group select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #d81b60;
+  box-shadow: 0 0 0 2px rgba(216, 27, 96, 0.15);
+}
+
+.field-hint {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+.checkboxes-group {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 6px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.calculate-btn {
+  background: linear-gradient(135deg, #d81b60, #ad1457);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(216, 27, 96, 0.45);
+}
+
+.calculate-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Summary Metric Cards ── */
+.recurrence-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-metric-card {
+  background: #fdfbfd;
+  border: 1px solid #f3e5f5;
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.summary-metric-card--primary {
+  background: #fff0f6;
+  border: 1.5px solid #f48fb1;
+}
+
+.summary-metric-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.summary-metric-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #d81b60;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.summary-metric-ci {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.summary-metric-sub {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.prognostic-group-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #ede7f6;
+  color: #4a148c;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* ── Chart Container ── */
+.recurrence-chart-container {
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.chart-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.chart-subtitle {
+  font-size: 0.82rem;
+  color: #777;
+}
+
+.metric-toggle-group {
+  display: flex;
+  background: #eee;
+  padding: 3px;
+  border-radius: 25px;
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn--active {
+  background: white;
+  color: #c2185b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-wrapper {
+  margin: 10px 0 16px;
+}
+
+.recurrence-chart-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  font-size: 0.84rem;
+}
+
+.tooltip-title {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+}
+
+.tooltip-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+}
+
+.tooltip-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.tooltip-sub {
+  font-size: 0.76rem;
+  color: #777;
+  padding-left: 14px;
+}
+
+.chart-explanation-box {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ── Metadata Grid ── */
+.recurrence-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.metadata-card {
+  background: #fdfbfd;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.85rem;
+}
+
+.metadata-card h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.metadata-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #555;
+}
+
+.model-info-line {
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.model-info-line code {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+}
+
+.text-warning {
+  color: #e65100;
+  font-style: italic;
+}
+
+/* ── Limitations Box ── */
+.recurrence-limitations-box {
+  background: #fff8e1;
+  border: 1px solid #ffecb3;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  color: #5d4037;
+  line-height: 1.5;
+}
+
+.recurrence-limitations-box h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #bf360c;
+  margin-bottom: 6px;
+}
+
+.sub-disclaimer {
+  font-size: 0.78rem;
+  color: #8d6e63;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════════════════
+   CLINICAL INTERPRETATION (SECTION 4)
+   ══════════════════════════════════════════════════ */
+.clinical-interpretation-card {
+  margin-top: 36px;
+  background: white;
+  border-radius: var(--card-radius);
+  border-top: 5px solid #00897b;
+  box-shadow: 0 10px 25px rgba(0, 137, 123, 0.08);
+  padding: 30px 24px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.clinical-interpretation-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.clinical-interpretation-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.clinical-interpretation-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #00796b;
+  margin-bottom: 4px;
+}
+
+.clinical-interpretation-card__subtitle {
+  font-size: 0.88rem;
+  color: #666;
+}
+
+.interpretation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.modality-col {
+  background: #fdfdfd;
+  border: 1px solid #eceff1;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modality-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.modality-badge--detection {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+.modality-badge--classification {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.modality-badge--recurrence {
+  background: #e0f2f1;
+  color: #00695c;
+}
+
+.modality-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #263238;
+}
+
+.modality-desc {
+  font-size: 0.85rem;
+  color: #546e7a;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.modality-scope {
+  font-size: 0.8rem;
+  color: #37474f;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.modality-limitation {
+  font-size: 0.78rem;
+  color: #b71c1c;
+  background: #ffebee;
+  padding: 6px 10px;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
+.multidisciplinary-notice {
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.multidisciplinary-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 8px;
+}
+
+.multidisciplinary-text {
+  font-size: 0.86rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.multidisciplinary-list {
+  padding-left: 20px;
+  font-size: 0.83rem;
+  color: #33691e;
+  line-height: 1.6;
+}
+
+.multidisciplinary-list li {
+  margin-bottom: 4px;
+}
+
+.regulatory-disclaimer-banner {
+  background: #fff3e0;
+  border: 1px solid #ffe0b2;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 0.82rem;
+  color: #e65100;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .recurrence-card,
+  .clinical-interpretation-card {
+    padding: 20px 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-header-row {
+    flex-direction: column;
+  }
+}
+
+

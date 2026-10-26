@@ -71,3 +71,25 @@ export async function sendChatMessage(message, history = []) {
 
   return response.json();
 }
+
+/**
+ * Predict breast cancer recurrence risk and survival curves
+ * using validated clinical and histopathological parameters.
+ * @param {Object} clinicalData - Patient clinical and histopathological data
+ * @returns {Promise<Object>} Recurrence risk prediction and survival curve
+ */
+export async function predictRecurrence(clinicalData = {}) {
+  const response = await fetch(`${API_BASE}/predict-recurrence`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(clinicalData),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.message || err.error || 'Recurrence prediction failed. Please check inputs.');
+  }
+
+  return response.json();
+}
+

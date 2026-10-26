@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import multer from 'multer';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { calculateRecurrenceRisk } from './recurrenceService.js';
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 20 * 1024 * 1024 } });
@@ -385,13 +386,38 @@ IMPORTANT RULES:
 
     res.json({ reply });
   } catch (error) {
-    console.error('Chat error:', error);
-    res.status(500).json({ error: 'Failed to get response. Please try again.' });
+// ── Breast Cancer Recurrence Risk Prediction ──
+// POST /api/predict-recurrence and POST /predict-recurrence
+// Evaluates breast cancer recurrence risk and survival curves using
+// the validated Nottingham Prognostic Index and Cox survival analysis model.
+const handleRecurrencePrediction = (req, res) => {
+  try {
+    const clinicalData = req.body || {};
+    const result = calculateRecurrenceRisk(clinicalData);
+
+    if (result.status === 'validation_error') {
+      return res.status(400).json(result);
+    }
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error('Recurrence prediction error:', error);
+    return res.status(500).json({
+      prediction_available: false,
+      status: 'server_error',
+      error: 'Failed to compute recurrence risk estimates. Please verify input data.',
+      limitations: 'An internal server error occurred while computing the statistical survival model.'
+    });
   }
-});
+};
+
+app.post('/api/predict-recurrence', handleRecurrencePrediction);
+app.post('/predict-recurrence', handleRecurrencePrediction);
 
 app.listen(PORT, () => {
   console.log(`🩺 AI Breast Cancer Care server running on http://localhost:${PORT}`);
   console.log(`   Health check: http://localhost:${PORT}/api/health`);
   console.log(`   Classify endpoint: http://localhost:${PORT}/api/classify`);
+  console.log(`   Recurrence endpoint: http://localhost:${PORT}/api/predict-recurrence`);
 });
+

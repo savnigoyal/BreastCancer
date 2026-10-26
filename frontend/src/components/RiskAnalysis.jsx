@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { analyzeImages } from '../utils/api';
 import CancerTypeClassification from './CancerTypeClassification';
+import RecurrenceRiskAnalysis from './RecurrenceRiskAnalysis';
+import ClinicalInterpretation from './ClinicalInterpretation';
 
 export default function RiskAnalysis() {
   const [ccFile, setCcFile] = useState(null);
@@ -322,15 +324,29 @@ export default function RiskAnalysis() {
         )}
 
         {/* ═══════════════════════════════════════════
-            CANCER TYPE CLASSIFICATION CARD
+            SECTION 2: CANCER TYPE CLASSIFICATION CARD
             Shown after detection analysis is available.
-            Passes the uploaded files so the user can
-            trigger classification separately.
             ═══════════════════════════════════════════ */}
         {(result || (!loading && ccFile && mloFile)) && (
           <CancerTypeClassification ccFile={ccFile} mloFile={mloFile} />
         )}
+
+        {/* ═══════════════════════════════════════════
+            SECTION 3: BREAST CANCER RECURRENCE RISK GRAPH
+            Interactive 10-year survival trajectory,
+            Nottingham Prognostic Index, and clinical
+            pathology inputs.
+            ═══════════════════════════════════════════ */}
+        <RecurrenceRiskAnalysis />
+
+        {/* ═══════════════════════════════════════════
+            SECTION 4: CLINICAL INTERPRETATION & LIMITATIONS
+            Consolidated multidisciplinary framework,
+            modality distinctions, and safety disclaimers.
+            ═══════════════════════════════════════════ */}
+        <ClinicalInterpretation />
       </div>
+
 
       {/* Lightbox */}
       {lightboxSrc && (
